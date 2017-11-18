@@ -1,3 +1,54 @@
+# Issues when installing pyrouge following the steps below:
+
+### Steps to solve issues when installing pyrouge
+
+Follow the below instructions:
+
+1) install pyrouge using the command from [here](https://pypi.python.org/pypi/pyrouge/0.1.0):  
+```
+pip install pyrouge
+```    
+
+2) Download the Rouge-1.5.5 folder from [here](https://github.com/andersjo/pyrouge/tree/master/tools/ROUGE-1.5.5):    
+```
+https://github.com/andersjo/pyrouge/tree/master/tools/ROUGE-1.5.5
+```
+
+3) Now set the pyrouge path appropriately using this:   
+```
+pyrouge_set_rouge_path /absolute/path/to/ROUGE-1.5.5/directory
+```  
+
+
+4) Now, test the following code:
+
+```
+from pyrouge import Rouge155
+
+r = Rouge155()
+r.system_dir = 'path/to/system_summaries'
+r.model_dir = 'path/to/model_summaries'
+r.system_filename_pattern = 'some_name.(\d+).txt'
+r.model_filename_pattern = 'some_name.[A-Z].#ID#.txt'
+
+output = r.convert_and_evaluate()
+print(output)
+output_dict = r.output_to_dict(output)
+```
+
+5) If it works great then, else run the following steps:    
+```
+cd pyrouge/ROUGE-1.5.5/data/
+rm WordNet-2.0.exc.db
+./WordNet-2.0-Exceptions/buildExeptionDB.pl ./WordNet-2.0-Exceptions ./smart_common_words.txt ./WordNet-2.0.exc.db
+```
+
+The following links helped: [1](https://pypi.python.org/pypi/pyrouge/0.1.0),[2](https://github.com/bheinzerling/pyrouge),
+[3](https://stackoverflow.com/questions/47045436/how-to-install-the-python-package-pyrouge-on-microsoft-windows/47045437#47045437),
+[4](https://github.com/andersjo/pyrouge),
+[5](https://github.com/tagucci/pythonrouge/issues/4).
+
+
 pyrouge
 =======
 
