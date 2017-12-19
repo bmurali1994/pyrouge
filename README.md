@@ -2,7 +2,7 @@
 
 ### Steps to solve issues when installing pyrouge!
 
-#### If you find any more issues other than these steps or better ways to solve these issues, feel free to create a pull request and send me an [email here](muraliraghubabu1994@gmail.com].
+#### If you find any more issues other than these steps or better ways to solve these issues, feel free to create a pull request and send me an [email here](muraliraghubabu1994@gmail.com).
 
 Follow the below instructions:
 
