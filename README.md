@@ -1,6 +1,8 @@
 # Issues when installing pyrouge following the steps below:
 
-### Steps to solve issues when installing pyrouge
+### Steps to solve issues when installing pyrouge!
+
+#### If you find any more issues other than these steps or better ways to solve these issues, feel free to create a pull request and send me an [email here](muraliraghubabu1994@gmail.com].
 
 Follow the below instructions:
 
@@ -34,19 +36,53 @@ r.model_filename_pattern = 'some_name.[A-Z].#ID#.txt'
 output = r.convert_and_evaluate()
 print(output)
 output_dict = r.output_to_dict(output)
+``` 
+
+```
+- If the above steps work, then great, else the below steps might be useful.
+```  
+
+5) If the error is soemthing like: ```can't locate XML/parser.pm in @INC ubuntu ...``` 
+Found a solution [here](https://www.experts-exchange.com/questions/23188990/Error-Can't-locate-XML-Parser-pm-in-INC-Perl-CentOS.html)
+Then, you need to download the XML::Parser from CPAN here: http://search.cpan.org/~msergeant/XML-Parser-2.44/
+```
+wget -r -np -R "index.html*" http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/XML-Parser-2.44.tar.gz
+tar -xzf XML-Parser-2.44.tar.gz
+cd XML-Parser-2.44 
+perl Makefile.PL
 ```
 
-5) If it works great then, else run the following steps:    
+6) If the error is something like: ```Can't locate LWP/UserAgent.pm in @INC ubuntu ...```
+then follow the link [here](https://help.directadmin.com/item.php?id=274) for the next steps:
+```
+perl -MCPAN -e 'install Bundle::LWP'
+```
+or 
+```
+wget http://www.cpan.org/modules/by-module/LWP/libwww-perl-5.837.tar.gz
+tar xvzf libwww-perl-5.837.tar.gz
+cd libwww-perl-5.837
+perl Makefile.PL
+make
+make install
+```
+
+7) If the error is something like: ```Cannot open exception db file for reading:``` 
+then run the following steps:    
 ```
 cd pyrouge/ROUGE-1.5.5/data/
 rm WordNet-2.0.exc.db
 ./WordNet-2.0-Exceptions/buildExeptionDB.pl ./WordNet-2.0-Exceptions ./smart_common_words.txt ./WordNet-2.0.exc.db
 ```
 
-The following links helped: [1](https://pypi.python.org/pypi/pyrouge/0.1.0),[2](https://github.com/bheinzerling/pyrouge),
-[3](https://stackoverflow.com/questions/47045436/how-to-install-the-python-package-pyrouge-on-microsoft-windows/47045437#47045437),
-[4](https://github.com/andersjo/pyrouge),
-[5](https://github.com/tagucci/pythonrouge/issues/4).
+
+
+The following links helped: [Link 1](https://pypi.python.org/pypi/pyrouge/0.1.0),[Link 2](https://github.com/bheinzerling/pyrouge),
+[Link 3](https://stackoverflow.com/questions/47045436/how-to-install-the-python-package-pyrouge-on-microsoft-windows/47045437#47045437),
+[Link 4](https://github.com/andersjo/pyrouge),
+[Link 5](https://github.com/tagucci/pythonrouge/issues/4).
+
+
 
 
 pyrouge
